@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "cd zerowaste_client && yarn build",
-    "dev": "cd zerowaste_back && yarn dev",
-    "start": "cd zerowaste_back && yarn start"
+    "build": "cd client && yarn build",
+    "dev": "cd server && yarn dev",
+    "start": "cd server && yarn start"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

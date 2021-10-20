@@ -12,7 +12,7 @@ var itemsRouter = require("./routes/items");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "../zerowaste_client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 // app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -20,7 +20,7 @@ app.use("/api", apiRouter);
 app.use("/items", itemsRouter);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../zerowaste_client/build", "index.html"));
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
 app.listen(port, () => {
