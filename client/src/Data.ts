@@ -9,7 +9,7 @@ interface optionsDTO {
   //example of effectOnWaste: [waste.plastic, waste.plastic, waste.vinyl, waste.paper] = [0,0,1,2]
 }
 
-export enum waste { //enum is for typescript
+export enum waste { //enum is for typescript(does not exist in javascript)
   //store waste result in an array
   plastic = 0,
   vinyl = 1,
@@ -18,6 +18,10 @@ export enum waste { //enum is for typescript
   metal = 4,
   glass = 5,
 }
+
+//get the length of enum(enum is actually an object)
+const keys = Object.keys(waste);
+const wasteLength = keys.length; //this will be the amount of waste types we have
 
 export const questions: questionDTO[] = [
   {
