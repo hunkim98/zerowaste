@@ -16,7 +16,6 @@ function Game({}: RouteComponentProps) {
     name: "입력해주세요",
     questionNumber: 0,
   });
-  const [warning, setWarning] = useState<string>("10자 이내로 적어주세요");
 
   return (
     <div>
