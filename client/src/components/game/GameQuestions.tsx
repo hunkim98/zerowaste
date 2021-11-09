@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { optionsDTO, questions, wasteArray } from "../../Data";
@@ -8,14 +9,58 @@ interface props {
   setUserInfo: Dispatch<SetStateAction<userInfo>>;
 }
 
+const timeout = 0;
 function GameQuestions({ userInfo, setUserInfo }: props) {
   const history = useHistory();
-  const handleOptionClick = (questionOption: optionsDTO) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const handleOptionClick = async (
+    questionOption: optionsDTO,
+    optionIndex: number
+  ) => {
     if (userInfo.questionNumber + 1 === questions.length) {
-      history.push("/result/" + "2");
+      //now it is time to send data to server
+      setIsLoading(true);
+      const maximumValue = Math.max(...userInfo.wasteInfo);
+      const maximumIndexes: number[] = [];
+      let animalType: number = 0;
+      userInfo.wasteInfo.map((element, index) => {
+        if (element === maximumValue) {
+          maximumIndexes.push(index);
+        }
+      });
+      if (maximumIndexes.length === 1) {
+        animalType = maximumIndexes[0];
+      } else {
+        animalType =
+          maximumIndexes[Math.floor(Math.random() * maximumIndexes.length)];
+      }
+      await axios({
+        method: "POST",
+        url: "/users",
+        data: {
+          createdAt: new Date(),
+          animalType: animalType,
+          animalIndex: Math.floor(Math.random() * 4),
+          //we have a total of 4 variances in animal
+          choice: userInfo.choice,
+        },
+      })
+        .then((res) => {
+          setTimeout(() => {
+            history.push(`/result/${res.data.data}`);
+            setIsLoading(false);
+          }, timeout);
+          // console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
+      //the user is still taking the test
       const tempArray = JSON.parse(JSON.stringify(userInfo.wasteInfo));
+      const tempChoice = JSON.parse(JSON.stringify(userInfo.choice));
       const tempObject = questionOption.effectOnWaste;
+      tempChoice[userInfo.questionNumber - 1] = optionIndex;
       for (const [key, value] of Object.entries(tempObject)) {
         //deep copy userInfo.wasteInfo
         const wasteIndex = wasteArray.findIndex((element) => element === key);
@@ -30,6 +75,7 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
         ...userInfo,
         questionNumber: userInfo.questionNumber + 1,
         wasteInfo: tempArray,
+        choice: tempChoice,
       });
     }
   };
@@ -38,12 +84,14 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
       <div className="global_mobile_container">
         <div className="game_question_container">
           <div>{questions[userInfo.questionNumber].question}</div>
-          {questions[userInfo.questionNumber].options.map((option) => {
+          {questions[userInfo.questionNumber].options.map((option, index) => {
             return (
               <div
                 key={option.choice}
                 onClick={() => {
-                  handleOptionClick(option);
+                  if (!isLoading) {
+                    handleOptionClick(option, index);
+                  }
                 }}
               >
                 {option.choice}

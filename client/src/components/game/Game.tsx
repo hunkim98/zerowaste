@@ -11,6 +11,7 @@ export interface userInfo {
   questionNumber: number;
   name: string;
   wasteInfo: number[];
+  choice: number[];
 }
 
 function Game({}: RouteComponentProps) {
@@ -19,6 +20,7 @@ function Game({}: RouteComponentProps) {
     name: "입력해주세요",
     questionNumber: 0,
     wasteInfo: [0, 0, 0, 0, 0, 0],
+    choice: [],
     //we have 6 waste types, initialize by 6 empty number array
     //index 0: plastic
     //index 1: styrofoam

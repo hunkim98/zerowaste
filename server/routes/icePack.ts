@@ -13,11 +13,8 @@ interface requesetDTO {
   totalRecycle: Number;
 }
 
-interface sendToMongoose {
+interface sendToMongoose extends requesetDTO {
   _id: mongoose.Types.ObjectId;
-  createdAt: Date;
-  totalGather: Number;
-  totalRecycle: Number;
 }
 
 router.get("/", function (req: any, res: any, next: any) {
@@ -39,7 +36,7 @@ router.post("/", function (req: { body: requesetDTO }, res: any, next: any) {
   });
   res.json({
     status: "success",
-    id: mongooseId,
+    data: mongooseId,
   });
 });
 
