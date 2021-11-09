@@ -4,10 +4,13 @@ import { questions } from "../../Data";
 import GameHome from "./GameHome";
 import GameQuestions from "./GameQuestions";
 import "../../styles/Game.css";
+
+interface userWasteInfo {}
 export interface userInfo {
   stage: 0 | 1 | 2;
   questionNumber: number;
   name: string;
+  wasteInfo: number[];
 }
 
 function Game({}: RouteComponentProps) {
@@ -15,10 +18,18 @@ function Game({}: RouteComponentProps) {
     stage: 0,
     name: "입력해주세요",
     questionNumber: 0,
+    wasteInfo: [0, 0, 0, 0, 0, 0],
+    //we have 6 waste types, initialize by 6 empty number array
+    //index 0: plastic
+    //index 1: styrofoam
+    //index 2: articles
+    //index 3: microplastic
+    //index 4: vinyl
+    //index 5: paper
   });
 
   return (
-    <div className="game_container">
+    <>
       {userInfo.stage === 0 ? (
         <GameHome userInfo={userInfo} setUserInfo={setUserInfo} />
       ) : userInfo.stage === 1 ? (
@@ -26,7 +37,7 @@ function Game({}: RouteComponentProps) {
       ) : (
         <div></div>
       )}
-    </div>
+    </>
   );
 }
 

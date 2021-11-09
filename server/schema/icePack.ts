@@ -7,11 +7,11 @@ export const updateIcePackSchema = new mongoose.Schema(
     totalRecycle: Number,
     createdAt: Date,
   },
-  { collection: "zerowaste" }
+  { collection: "icepack" }
 );
 
 export const changeIcePackModel = mongoose.model(
-  "IcePack",
+  "UpdateIcePack",
   updateIcePackSchema
 );
 
@@ -22,5 +22,10 @@ export const readIcePackSchema = new mongoose.Schema(
     totalRecycle: Number,
     createdAt: Date,
   },
-  { collection: "zerowaste" } //adds data to the same collection but saved with objectId
+  { collection: "icepack" } //adds data to the same collection but saved with objectId
+);
+
+export const readIcePackModel = mongoose.model(
+  "ReadIcePack",
+  readIcePackSchema
 );

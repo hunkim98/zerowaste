@@ -19,17 +19,19 @@ function Navigation() {
     <animated.div
       style={{
         ...props,
+        position: "absolute",
+        display: "flex",
         width: "100%",
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingTop: 10,
-        paddingBottom: 10,
+        justifyContent: "center",
       }}
     >
       <div
         style={{
+          height: 60,
           width: "100%",
+          maxWidth: 500,
           display: "flex",
+          alignItems: "center",
           justifyContent: "flex-end",
         }}
       >

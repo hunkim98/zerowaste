@@ -1,8 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
+import { icePackDTO } from "../../../dto/common.dto";
 
 function About({}: RouteComponentProps) {
-  return <div>About</div>;
+  const [icePackInfo, setIcePackInfo] = useState<icePackDTO>();
+  useEffect(() => {
+    axios({ method: "GET", url: "/icePack" }).then((res) => {
+      console.log(res.data.data[0]);
+      setIcePackInfo(res.data.data[0]);
+    });
+  }, []);
+  return (
+    <div className="global_container">
+      <div className="global_mobile_container">
+        <div>
+          <div>About</div>
+          <div>{String(icePackInfo?.createdAt).slice(0, 10)}</div>
+          <div>{icePackInfo?.totalRecycle}</div>
+          <div>{icePackInfo?.totalGather}</div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default About;

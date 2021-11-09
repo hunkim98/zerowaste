@@ -1,6 +1,10 @@
 import mongoose = require("mongoose");
 import express = require("express");
-import { changeIcePackModel } from "../schema/icePack";
+import {
+  changeIcePackModel,
+  readIcePackModel,
+  readIcePackSchema,
+} from "../schema/icePack";
 var router = express.Router();
 
 interface requesetDTO {
@@ -17,7 +21,13 @@ interface sendToMongoose {
 }
 
 router.get("/", function (req: any, res: any, next: any) {
-  res.send("hello");
+  readIcePackModel
+    .find()
+    .sort({ createdAt: -1 })
+    .limit(1)
+    .then((data) => {
+      res.json({ status: "success", data: data });
+    });
 });
 
 router.post("/", function (req: { body: requesetDTO }, res: any, next: any) {

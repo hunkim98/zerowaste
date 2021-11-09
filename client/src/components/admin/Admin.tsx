@@ -11,11 +11,18 @@ import {
 } from "antd";
 import { Prompt, RouteComponentProps } from "react-router-dom";
 import axios from "axios";
+import moment from "moment";
+import { icePackDTO } from "../../../dto/common.dto";
 
 function Admin({}: RouteComponentProps) {
   const password = "zerowaste";
   const [authenticated, setAuthenticated] = useState<boolean>();
   const [inputPassword, setInputPassword] = useState<string>();
+  const [icePackInfo, setIcePackInfo] = useState<icePackDTO>({
+    createdAt: new Date(), //default to today
+    totalGather: 0,
+    totalRecycle: 0,
+  });
 
   const handleOK = () => {
     if (inputPassword === password) {
@@ -24,11 +31,15 @@ function Admin({}: RouteComponentProps) {
   };
   const handleCancel = () => {};
 
+  // useEffect(() => {
+  //   console.log(icePackInfo);
+  // }, [icePackInfo]);
+
   const changeIcePackDB = () => {
     axios({
       method: "POST",
       url: "/icePack",
-      data: { createdAt: new Date(), totalGather: 0, totalRecycle: 0 },
+      data: icePackInfo,
     }).then((res) => console.log(res));
   };
 
@@ -46,20 +57,43 @@ function Admin({}: RouteComponentProps) {
           }}
         >
           <div style={{ fontSize: 20 }}>아이스팩 분리수거 정보 수정 페이지</div>
-          <Form labelCol={{ span: 8 }}>
+          <Form
+            labelCol={{ span: 8 }}
+            initialValues={{
+              date: moment(icePackInfo.createdAt),
+              gather: icePackInfo.totalGather,
+              recycle: icePackInfo.totalRecycle,
+            }}
+          >
             <Form.Item name="date" label="날짜">
               <DatePicker
                 style={{ width: 150 }}
                 onChange={(date, dateString) => {
                   console.log(date, dateString);
+                  if (date !== null) {
+                    setIcePackInfo({
+                      ...icePackInfo,
+                      createdAt: date.toDate(),
+                    });
+                  }
                 }}
               />
             </Form.Item>
             <Form.Item name="gather" label="수거 갯수">
-              <InputNumber style={{ width: 150 }} />
+              <InputNumber
+                style={{ width: 150 }}
+                onChange={(e: number) =>
+                  setIcePackInfo({ ...icePackInfo, totalGather: e })
+                }
+              />
             </Form.Item>
             <Form.Item name="recycle" label="재활용 갯수">
-              <InputNumber style={{ width: 150 }} />
+              <InputNumber
+                style={{ width: 150 }}
+                onChange={(e: number) => {
+                  setIcePackInfo({ ...icePackInfo, totalRecycle: e });
+                }}
+              />
             </Form.Item>
             <Form.Item>
               <Button
