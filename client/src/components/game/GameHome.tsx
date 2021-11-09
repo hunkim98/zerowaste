@@ -1,5 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
+
 import { userInfo } from "./Game";
+import "../../styles/GameHome.css";
 
 interface props {
   userInfo: userInfo;
@@ -9,8 +11,7 @@ interface props {
 function GameHome({ userInfo, setUserInfo }: props) {
   const [warning, setWarning] = useState<string>("10자 이내로 적어주세요");
   return (
-    <div>
-      {" "}
+    <div className="game_home_container">
       <div>성함을 입력해주세요</div>
       <input
         placeholder={userInfo.name}

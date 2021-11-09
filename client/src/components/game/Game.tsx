@@ -3,7 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { questions } from "../../Data";
 import GameHome from "./GameHome";
 import GameQuestions from "./GameQuestions";
-
+import "../../styles/Game.css";
 export interface userInfo {
   stage: 0 | 1 | 2;
   questionNumber: number;
@@ -18,7 +18,7 @@ function Game({}: RouteComponentProps) {
   });
 
   return (
-    <div>
+    <div className="game_container">
       {userInfo.stage === 0 ? (
         <GameHome userInfo={userInfo} setUserInfo={setUserInfo} />
       ) : userInfo.stage === 1 ? (
