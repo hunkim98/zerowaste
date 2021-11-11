@@ -16,6 +16,7 @@ function About({}: RouteComponentProps) {
       <div className="global_mobile_container">
         <div>
           <div>About</div>
+          <div>This is eungi</div>
           <div>{String(icePackInfo?.createdAt).slice(0, 10)}</div>
           <div>{icePackInfo?.totalRecycle}</div>
           <div>{icePackInfo?.totalGather}</div>
