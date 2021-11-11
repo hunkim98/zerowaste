@@ -15,6 +15,7 @@ function GameHome({ userInfo, setUserInfo }: props) {
       <div className="global_mobile_container">
         <div className="game_home_input_container">
           <div>성함을 입력해주세요</div>
+          <div>This is 재윤</div>
           <input
             placeholder={userInfo.name}
             onChange={(e) => {
