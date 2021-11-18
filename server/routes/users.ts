@@ -1,6 +1,6 @@
 import mongoose = require("mongoose");
 import express = require("express");
-import { updateUserModel } from "../schema/user";
+import { readUserModel, updateUserModel } from "../schema/user";
 var router = express.Router();
 
 interface requesetDTO {
@@ -16,7 +16,9 @@ interface sendToMongoose extends requesetDTO {
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
+  readUserModel
+    .findOne({ _id: req.query.id })
+    .then((data) => res.json({ status: "success", data: data }));
 });
 
 router.post("/", function (req: { body: requesetDTO }, res, next) {

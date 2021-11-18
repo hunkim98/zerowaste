@@ -3,6 +3,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { optionsDTO, questions, wasteArray } from "../../Data";
 import { userInfo } from "./Game";
+import "../../styles/GameQuestions.css"
 
 interface props {
   userInfo: userInfo;
@@ -81,7 +82,17 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
   };
   return (
     <div className="global_container">
-      <div className="global_mobile_container">
+      <div
+        className="global_mobile_container"
+        style={{
+          backgroundColor:
+            userInfo.questionNumber < 4
+              ? "#FFDAC5"
+              : userInfo.questionNumber < 8
+              ? "#FBF3C9"
+              : "#E9D0F2",
+        }}
+      >
         <div className="game_question_container">
           <div>{questions[userInfo.questionNumber].question}</div>
           {questions[userInfo.questionNumber].options.map((option, index) => {
