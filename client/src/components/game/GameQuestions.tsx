@@ -81,7 +81,17 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
   };
   return (
     <div className="global_container">
-      <div className="global_mobile_container">
+      <div
+        className="global_mobile_container"
+        style={{
+          backgroundColor:
+            userInfo.questionNumber < 4
+              ? "#FFDAC5"
+              : userInfo.questionNumber < 8
+              ? "#FBF3C9"
+              : "#E9D0F2",
+        }}
+      >
         <div className="game_question_container">
           <div>{questions[userInfo.questionNumber].question}</div>
           {questions[userInfo.questionNumber].options.map((option, index) => {
