@@ -25,6 +25,7 @@ function GameHome({ userInfo, setUserInfo }: props) {
               setUserInfo({ ...userInfo, name: e.target.value });
             }}
           ></input>
+
           <button
             onClick={() => {
               if (userInfo.name.length > 10) {
@@ -36,6 +37,7 @@ function GameHome({ userInfo, setUserInfo }: props) {
           >
             시작하기
           </button>
+
           <div>{warning}</div>
         </div>
       </div>

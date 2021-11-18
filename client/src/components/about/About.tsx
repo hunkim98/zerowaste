@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { icePackDTO } from "../../../dto/common.dto";
+import Infographic from "./Infographic";
 
 function About({}: RouteComponentProps) {
   const [icePackInfo, setIcePackInfo] = useState<icePackDTO>();
@@ -20,6 +21,7 @@ function About({}: RouteComponentProps) {
           <div>{String(icePackInfo?.createdAt).slice(0, 10)}</div>
           <div>{icePackInfo?.totalRecycle}</div>
           <div>{icePackInfo?.totalGather}</div>
+          <Infographic icePackInfo={icePackInfo} />
         </div>
       </div>
     </div>
