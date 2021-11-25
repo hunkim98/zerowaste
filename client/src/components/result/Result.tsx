@@ -6,7 +6,7 @@ import { ResultData } from "./ResultData";
 import ResultImage from "./ResultImage";
 import otter from "./images/otter(1).png";
 
-interface resultResponse {
+export interface resultResponse {
   animalIndex: number;
   animalType: number;
 }
@@ -14,17 +14,29 @@ interface resultResponse {
 function Result({}: RouteComponentProps) {
   let { id } = useParams<{ id: string | undefined }>();
   const [resultResponse, setResultResponse] = useState<resultResponse>();
+  const [dataForImage, setDataForImage] = useState<resultResponse[]>();
   useEffect(() => {
     console.log(id);
     if (id !== undefined) {
       axios({ method: "GET", url: "/users", params: { id: id } }).then(
         (res) => {
+          console.log(res);
           console.log(res.data.data.animalIndex);
-          console.log(ResultData[Number(res.data.data.animalIndex)]);
+          console.log(ResultData[Number(res.data.animalIndex)]);
+          const myResult: resultResponse = {
+            animalIndex: Number(res.data.data.animalIndex),
+            animalType: Number(res.data.data.animalType),
+          };
           setResultResponse({
             animalIndex: Number(res.data.data.animalIndex),
             animalType: Number(res.data.data.animalType),
           });
+
+          setDataForImage(
+            res.data.othersData.map((X: resultResponse) => {
+              return { animalIndex: X.animalIndex, animalType: X.animalType };
+            })
+          );
         }
       );
     }
@@ -45,7 +57,9 @@ function Result({}: RouteComponentProps) {
             </div>
           </div>
         )}
-        <ResultImage />
+        {resultResponse !== undefined && dataForImage !== undefined && (
+          <ResultImage myResult={resultResponse} othersResult={dataForImage} />
+        )}
       </div>
     </div>
   );

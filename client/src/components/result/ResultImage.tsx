@@ -1,7 +1,15 @@
 import React from "react";
 import background from "../../images/background.png";
+import { resultResponse } from "./Result";
+import { ResultData } from "./ResultData";
 
-function ResultImage() {
+interface props {
+  myResult: resultResponse;
+  othersResult: resultResponse[];
+}
+
+function ResultImage({ myResult, othersResult }: props) {
+  console.log(ResultData[myResult.animalType].englishName);
   return (
     <div
       style={{
@@ -22,6 +30,7 @@ function ResultImage() {
         xmlSpace="preserve"
       >
         <g id="레이어_3" fill="#B2D182">
+          {/* this is sky */}
           <rect x="-5" y="389.6" width="439.5" height="878.4" />
         </g>
         <g id="레이어_2" fill="#AFDBF3">
@@ -44,13 +53,16 @@ function ResultImage() {
             <path d="M452.6,1257.6C452.4,1255.6,450.6,1252.3,452.6,1257.6L452.6,1257.6z" />
           </g>
         </g>
+
         <image
           //the href links itself to the public folder
-          href="/images/otter1.png" //this is the public folder
-          x="100"
-          y="100"
-          width="100"
-          height="100"
+          href={`/images/${ResultData[myResult.animalType].englishName}(${
+            myResult.animalIndex
+          }).png`} //this is the public folder
+          x="0"
+          y="878.4"
+          width={`${ResultData[myResult.animalType].size}`}
+          height={`${ResultData[myResult.animalType].size}`}
         />
       </svg>
     </div>

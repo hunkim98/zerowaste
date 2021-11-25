@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { optionsDTO, questions, wasteArray } from "../../Data";
 import { userInfo } from "./Game";
-import "../../styles/GameQuestions.css"
+import "../../styles/GameQuestions.css";
 
 interface props {
   userInfo: userInfo;
