@@ -4,6 +4,7 @@ import { readUserModel, updateUserModel } from "../schema/user";
 var router = express.Router();
 
 interface requestDTO {
+  username: String;
   createdAt: Date;
   animalType: Number;
   animalIndex: Number;
@@ -24,7 +25,8 @@ router.get("/", async function (req, res, next) {
       _id: { $ne: req.query.id },
       //not equal to current user's
     })
-    .limit(15);
+    .sort({ _id: -1 })
+    .limit(Number(req.query.limit));
 
   res.json({ status: "success", data, othersData });
   // .then((data) => res.json({ status: "success", data: data }));
