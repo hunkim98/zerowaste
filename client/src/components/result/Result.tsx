@@ -4,9 +4,7 @@ import { RouteComponentProps, useParams } from "react-router-dom";
 import "../../styles/Result.css";
 import { ResultData } from "./ResultData";
 import ResultImage from "./ResultImage";
-import otter from "./images/otter(1).png";
 import Loading from "./Loading";
-import { url } from "inspector";
 import background1 from "../background/background1.jpg";
 import background2 from "../background/background2.jpg";
 
