@@ -13,18 +13,25 @@ function GameHome({ userInfo, setUserInfo }: props) {
   return (
     <div className="global_container">
       <div className="global_mobile_container">
-        <div>
-          쓰레기 소비패턴을 분석하여 당신의 도움이 가장 필요한 숲속 친구를
-          찾아드릴게요.
+        <div className="game_first_sentence">
+          <div> 쓰레기 소비패턴을 분석하여 당신의 도움이 </div>
+          <div> 가장 필요한 숲속 친구를 찾아드릴게요. </div>
+        </div>
+        <div className="game_please">
+          <div> 먼저 숲속 친구의 </div>
+          <div> 이름을 지어주세요!</div>
         </div>
         <div className="game_home_input_container">
-          <div>먼저 숲속 친구의 이름을 지어주세요!</div>
-          <input
-            placeholder={userInfo.name}
-            onChange={(e) => {
-              setUserInfo({ ...userInfo, name: e.target.value });
-            }}
-          ></input>
+          <div className="game_your_name">
+            <input
+              placeholder={userInfo.name}
+              onChange={(e) => {
+                setUserInfo({ ...userInfo, name: e.target.value });
+              }}
+            ></input>
+
+            <div className="game_warning">{warning}</div>
+          </div>
 
           <button
             onClick={() => {
@@ -37,8 +44,6 @@ function GameHome({ userInfo, setUserInfo }: props) {
           >
             시작하기
           </button>
-
-          <div>{warning}</div>
         </div>
       </div>
     </div>
