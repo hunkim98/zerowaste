@@ -10,7 +10,7 @@ interface props {
   setUserInfo: Dispatch<SetStateAction<userInfo>>;
 }
 
-const timeout = 0;
+const timeout = 1500;
 function GameQuestions({ userInfo, setUserInfo }: props) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -39,9 +39,10 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
         method: "POST",
         url: "/users",
         data: {
+          username: userInfo.name,
           createdAt: new Date(),
           animalType: animalType,
-          animalIndex: Math.floor(Math.random() * 4),
+          animalIndex: Math.floor(Math.random() * 3) + 1,
           //we have a total of 4 variances in animal
           choice: userInfo.choice,
         },

@@ -1,15 +1,149 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import background from "../../images/background.png";
 import { resultResponse } from "./Result";
 import { ResultData } from "./ResultData";
+import { shuffle } from "./Shuffle";
 
 interface props {
   myResult: resultResponse;
   othersResult: resultResponse[];
 }
 
+interface location {
+  x: number;
+  y: number;
+  upperLimit: boolean;
+  lowerLimit: boolean;
+}
+
+const skyLocationArray: location[] = [
+  { x: 150, y: 60, upperLimit: false, lowerLimit: false },
+  { x: 220, y: 200, upperLimit: false, lowerLimit: false },
+];
+
+interface resultImageLocation extends resultResponse {
+  x: number;
+  y: number;
+}
+
 function ResultImage({ myResult, othersResult }: props) {
-  console.log(ResultData[myResult.animalType].englishName);
+  const LocationArray: location[] = [
+    //first row
+    { x: 25, y: 360, upperLimit: true, lowerLimit: false },
+    { x: 140, y: 360, upperLimit: true, lowerLimit: false },
+    { x: 280, y: 360, upperLimit: true, lowerLimit: true },
+    //2nd row
+    { x: 15, y: 480, upperLimit: false, lowerLimit: false },
+    { x: 160, y: 540, upperLimit: false, lowerLimit: false },
+    { x: 280, y: 510, upperLimit: false, lowerLimit: true },
+    { x: 15, y: 600, upperLimit: false, lowerLimit: true },
+    //top right river
+    { x: 290, y: 690, upperLimit: true, lowerLimit: true },
+    //along the river two
+    { x: 15, y: 810, upperLimit: true, lowerLimit: false },
+    { x: 170, y: 750, upperLimit: false, lowerLimit: true },
+    //inner first row
+    { x: 300, y: 860, upperLimit: false, lowerLimit: true },
+    { x: 60, y: 920, upperLimit: false, lowerLimit: false },
+    { x: 150, y: 1000, upperLimit: false, lowerLimit: false },
+    //bottom right
+    { x: 300, y: 1030, upperLimit: true, lowerLimit: false },
+    //island
+    { x: 5, y: 1140, upperLimit: true, lowerLimit: false },
+  ];
+  const [flyingStorksArray, setFlyingStorksArray] = useState<resultResponse[]>(
+    []
+  );
+  const [groundAnimalsArray, setGroundAnimalsArray] = useState<
+    resultResponse[]
+  >([]);
+  const [flyingStorksLocations, setFlyingStorksLocations] = useState<
+    resultImageLocation[]
+  >([]);
+  const [groundAnimalsLocations, setGroundAnimalsLocations] = useState<
+    resultImageLocation[]
+  >([]);
+
+  const [locationPrepared, setLoactionPrepared] = useState<boolean>(false);
+  useEffect(() => {
+    // console.log(
+    //   `/images/${ResultData[myResult.animalType].englishName}(${
+    //     myResult.animalIndex
+    //   }).png`
+    // );
+
+    const tempResults = othersResult.concat(myResult);
+    console.log(tempResults);
+    const groundAnimals = tempResults.filter(
+      (X) => !(X.animalIndex === 2 && X.animalType === 4)
+    );
+    const flyingStorks = tempResults.filter(
+      (X) => X.animalIndex === 2 && X.animalType === 4
+    );
+    if (flyingStorks.length > 2) {
+      const userStorkData: resultResponse[] = [];
+      flyingStorks.filter(
+        //find the data same with the user data
+        (X) =>
+          X?.username === myResult.username &&
+          X.animalIndex === myResult.animalIndex &&
+          X.animalType === myResult.animalType
+      );
+      if (userStorkData.length !== 0) {
+        //there exists a user data in the userStorkData
+        const finalData = userStorkData;
+        finalData.push(flyingStorks[0]);
+        setFlyingStorksArray(finalData);
+      } else {
+        const finalData = flyingStorks.filter((X, index) => index < 2);
+        setFlyingStorksArray(finalData);
+      }
+    } else {
+      setFlyingStorksArray(flyingStorks);
+    }
+
+    const shuffledGroundAnimals = shuffle(groundAnimals);
+    setGroundAnimalsArray(shuffledGroundAnimals);
+  }, [myResult, othersResult]);
+
+  useEffect(() => {
+    const count = flyingStorksArray.length;
+    const finalLocation: location[] = [];
+    if (count < 2) {
+      const randomIndex = Math.floor(Math.random() * 1); //either 1 or 0
+      finalLocation.push(skyLocationArray[randomIndex]);
+      // setFlyingStorksLocations(finalLocation);
+    }
+  }, [flyingStorksArray]);
+
+  useEffect(() => {
+    let countDifference = LocationArray.length - groundAnimalsArray.length;
+    console.log(countDifference);
+    while (countDifference > 0) {
+      console.log("hi");
+      const indexToDelete = Math.floor(Math.random() * LocationArray.length);
+      LocationArray.splice(indexToDelete, 1); //remove one item at the indexToDelete
+      countDifference = LocationArray.length - groundAnimalsArray.length;
+    }
+    setGroundAnimalsLocations(
+      groundAnimalsArray.map((X, index) => {
+        return {
+          animalIndex: X.animalIndex,
+          animalType: X.animalType,
+          username: X.username,
+          x: LocationArray[index].x,
+          y: LocationArray[index].y,
+          _id: X._id,
+        };
+      })
+    );
+    // setGroundAnimalsLocations(LocationArray);
+  }, [groundAnimalsArray]);
+
+  useEffect(() => {
+    console.log("hey", groundAnimalsLocations);
+  }, [flyingStorksArray, groundAnimalsLocations]);
+
   return (
     <div
       style={{
@@ -54,16 +188,52 @@ function ResultImage({ myResult, othersResult }: props) {
           </g>
         </g>
 
-        <image
-          //the href links itself to the public folder
-          href={`/images/${ResultData[myResult.animalType].englishName}(${
-            myResult.animalIndex
-          }).png`} //this is the public folder
-          x="0"
-          y="878.4"
-          width={`${ResultData[myResult.animalType].size}`}
-          height={`${ResultData[myResult.animalType].size}`}
-        />
+        {groundAnimalsLocations.length !== 0 &&
+          groundAnimalsLocations.map((X, index) => {
+            {
+              return (
+                <g key={index}>
+                  <image
+                    x={X.x}
+                    y={X.y}
+                    width={`${ResultData[X.animalType].size}`}
+                    height={`${ResultData[X.animalType].size}`}
+                    href={`/images/${ResultData[X.animalType].englishName}(${
+                      X.animalIndex
+                    }).png`} //this is the public folder
+                  />
+                  <text
+                    x={X.x + ResultData[X.animalType].size / 2}
+                    y={X.y + ResultData[X.animalType].size + 5}
+                    fill="black"
+                    dominant-baseline="middle"
+                    text-anchor="middle"
+                  >
+                    {X.username}
+                  </text>
+                </g>
+              );
+            }
+          })}
+        {/* <g>
+          <image
+            //the href links itself to the public folder
+            href={`/images/${ResultData[myResult.animalType].englishName}(${
+              myResult.animalIndex
+            }).png`} //this is the public folder
+            x="0"
+            y="600"
+            width={`${ResultData[myResult.animalType].size}`}
+            height={`${ResultData[myResult.animalType].size}`}
+          />
+          <text
+            x={0 + ResultData[myResult.animalType].size / 2}
+            y={874.4 + ResultData[myResult.animalType].size + 15}
+            fill="black"
+          >
+            {"이름"}
+          </text>
+        </g> */}
       </svg>
     </div>
   );
