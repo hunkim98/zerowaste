@@ -3,16 +3,23 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { userInfo } from "./Game";
 import "../../styles/GameHome.css";
 
+import background_home from "../background/background_home.png";
+
 interface props {
   userInfo: userInfo;
   setUserInfo: Dispatch<SetStateAction<userInfo>>;
 }
 
 function GameHome({ userInfo, setUserInfo }: props) {
-  const [warning, setWarning] = useState<string>("10자 이내로 적어주세요");
+  const [warning, setWarning] = useState<string>("10자 이내로 적어주세요!");
   return (
     <div className="global_container">
-      <div className="global_mobile_container">
+      <div
+        className="global_mobile_container"
+        style={{
+          backgroundImage: `url(${background_home})`,
+        }}
+      >
         <div className="game_first_sentence">
           <div> 쓰레기 소비패턴을 분석하여 당신의 도움이 </div>
           <div> 가장 필요한 숲속 친구를 찾아드릴게요. </div>
