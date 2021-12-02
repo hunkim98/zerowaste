@@ -48,10 +48,7 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
         },
       })
         .then((res) => {
-          setTimeout(() => {
-            history.push(`/result/${res.data.data}`);
-            setIsLoading(false);
-          }, timeout);
+          history.push(`/result/${res.data.data}`);
           // console.log(res);
         })
         .catch((error) => {
