@@ -5,6 +5,10 @@ import { optionsDTO, questions, wasteArray } from "../../Data";
 import { userInfo } from "./Game";
 import "../../styles/GameQuestions.css";
 
+import background_question_pink from "../background/background_question_pink.png";
+import background_question_yellow from "../background/background_question_yellow.png";
+import background_question_violet from "../background/background_question_violet.png";
+
 interface props {
   userInfo: userInfo;
   setUserInfo: Dispatch<SetStateAction<userInfo>>;
@@ -83,30 +87,53 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
       <div
         className="global_mobile_container"
         style={{
-          backgroundColor:
+          backgroundImage:
             userInfo.questionNumber < 4
-              ? "#FFDAC5"
+              ? `url(${background_question_pink})`
               : userInfo.questionNumber < 8
-              ? "#FBF3C9"
-              : "#E9D0F2",
+              ? `url(${background_question_yellow})`
+              : `url(${background_question_violet})`,
         }}
       >
         <div className="game_question_container">
-          <div>{questions[userInfo.questionNumber].question}</div>
-          {questions[userInfo.questionNumber].options.map((option, index) => {
-            return (
-              <div
-                key={option.choice}
-                onClick={() => {
-                  if (!isLoading) {
-                    handleOptionClick(option, index);
-                  }
-                }}
-              >
-                {option.choice}
-              </div>
-            );
-          })}
+          <div className="game_question_toptext">
+            내 도움이 가장 필요한 친구 찾기
+          </div>
+          <div className="game_question_navigator_container">
+            <div className="game_question_navigator_background"></div>
+            <div className="game_question_navigator_state"></div>
+          </div>
+          <div className="game_question_questiontext_container">
+            <div className="game_question_questiontext_number">00</div>
+            <div className="game_question_questiontext_body">
+              {questions[userInfo.questionNumber].question}
+            </div>
+          </div>
+          <div className="game_question_options_container">
+            {questions[userInfo.questionNumber].options.map((option, index) => {
+              return (
+                <div
+                  className="game_question_options_button_container"
+                  style={{
+                    backgroundColor:
+                      userInfo.questionNumber < 4
+                        ? "#C5ECE5"
+                        : userInfo.questionNumber < 8
+                        ? "#A5C379"
+                        : "#FBF3C9",
+                  }}
+                  key={option.choice}
+                  onClick={() => {
+                    if (!isLoading) {
+                      handleOptionClick(option, index);
+                    }
+                  }}
+                >
+                  {option.choice}
+                </div>
+              );
+            })}{" "}
+          </div>
         </div>
       </div>
     </div>
