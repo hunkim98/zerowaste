@@ -150,7 +150,7 @@ function ResultImage({ myResult, othersResult }: props) {
         backgroundImage: `url(${background})`,
         backgroundSize: "contain" /* <------ */,
         backgroundRepeat: "no-repeat",
-        // width: "100%",
+        width: "100%",
         minHeight: "100vh",
       }}
     >
