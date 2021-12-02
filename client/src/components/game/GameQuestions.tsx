@@ -112,24 +112,37 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
           <div className="game_question_options_container">
             {questions[userInfo.questionNumber].options.map((option, index) => {
               return (
-                <div
-                  className="game_question_options_button_container"
-                  style={{
-                    backgroundColor:
-                      userInfo.questionNumber < 4
-                        ? "#C5ECE5"
-                        : userInfo.questionNumber < 8
-                        ? "#A5C379"
-                        : "#FBF3C9",
-                  }}
-                  key={option.choice}
-                  onClick={() => {
-                    if (!isLoading) {
-                      handleOptionClick(option, index);
-                    }
-                  }}
-                >
-                  {option.choice}
+                <div className="game_question_options_button_container">
+                  <div
+                    className="game_question_options_behind"
+                    style={{
+                      backgroundColor:
+                        userInfo.questionNumber < 4
+                          ? "#7CD6C5"
+                          : userInfo.questionNumber < 8
+                          ? "#67B54C"
+                          : "#FFDB7E",
+                    }}
+                  ></div>
+                  <div
+                    className="game_question_options_button"
+                    style={{
+                      backgroundColor:
+                        userInfo.questionNumber < 4
+                          ? "#C5ECE5"
+                          : userInfo.questionNumber < 8
+                          ? "#A5C379"
+                          : "#FBF3C9",
+                    }}
+                    key={option.choice}
+                    onClick={() => {
+                      if (!isLoading) {
+                        handleOptionClick(option, index);
+                      }
+                    }}
+                  >
+                    {option.choice}
+                  </div>
                 </div>
               );
             })}{" "}
