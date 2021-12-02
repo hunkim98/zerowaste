@@ -16,17 +16,16 @@ interface location {
   lowerLimit: boolean;
 }
 
-const skyLocationArray: location[] = [
-  { x: 150, y: 60, upperLimit: false, lowerLimit: false },
-  { x: 220, y: 200, upperLimit: false, lowerLimit: false },
-];
-
 interface resultImageLocation extends resultResponse {
   x: number;
   y: number;
 }
 
 function ResultImage({ myResult, othersResult }: props) {
+  const skyLocationArray: location[] = [
+    { x: 120, y: 120, upperLimit: false, lowerLimit: false },
+    { x: 220, y: 200, upperLimit: false, lowerLimit: false },
+  ];
   const LocationArray: location[] = [
     //first row
     { x: 25, y: 360, upperLimit: true, lowerLimit: false },
@@ -63,6 +62,7 @@ function ResultImage({ myResult, othersResult }: props) {
   const [groundAnimalsLocations, setGroundAnimalsLocations] = useState<
     resultImageLocation[]
   >([]);
+  const [shuffled, setShuffled] = useState<boolean>(false);
 
   const [locationPrepared, setLoactionPrepared] = useState<boolean>(false);
   useEffect(() => {
@@ -107,14 +107,19 @@ function ResultImage({ myResult, othersResult }: props) {
   }, [myResult, othersResult]);
 
   useEffect(() => {
-    const count = flyingStorksArray.length;
-    const finalLocation: location[] = [];
-    if (count < 2) {
-      const randomIndex = Math.floor(Math.random() * 1); //either 1 or 0
-      finalLocation.push(skyLocationArray[randomIndex]);
-      // setFlyingStorksLocations(finalLocation);
-    }
-  }, [flyingStorksArray]);
+    setFlyingStorksLocations(
+      flyingStorksArray.map((X, index) => {
+        return {
+          animalIndex: X.animalIndex,
+          animalType: X.animalType,
+          username: X.username,
+          x: skyLocationArray[index].x,
+          y: skyLocationArray[index].y,
+          _id: X._id,
+        };
+      })
+    );
+  }, [flyingStorksArray, shuffled]);
 
   useEffect(() => {
     let countDifference = LocationArray.length - groundAnimalsArray.length;
@@ -138,7 +143,7 @@ function ResultImage({ myResult, othersResult }: props) {
       })
     );
     // setGroundAnimalsLocations(LocationArray);
-  }, [groundAnimalsArray]);
+  }, [groundAnimalsArray, shuffled]);
 
   useEffect(() => {
     console.log("hey", groundAnimalsLocations);
@@ -187,6 +192,31 @@ function ResultImage({ myResult, othersResult }: props) {
             <path d="M452.6,1257.6C452.4,1255.6,450.6,1252.3,452.6,1257.6L452.6,1257.6z" />
           </g>
         </g>
+        {flyingStorksLocations.length !== 0 &&
+          flyingStorksLocations.map((X, index) => {
+            return (
+              <g key={index}>
+                <image
+                  x={X.x}
+                  y={X.y}
+                  width={`${ResultData[X.animalType].size}`}
+                  height={`${ResultData[X.animalType].size}`}
+                  href={`/images/${ResultData[X.animalType].englishName}(${
+                    X.animalIndex
+                  }).png`} //this is the public folder
+                />
+                <text
+                  x={X.x + ResultData[X.animalType].size / 2}
+                  y={X.y + ResultData[X.animalType].size + 5}
+                  fill="black"
+                  dominant-baseline="middle"
+                  text-anchor="middle"
+                >
+                  {X.username}
+                </text>
+              </g>
+            );
+          })}
 
         {groundAnimalsLocations.length !== 0 &&
           groundAnimalsLocations.map((X, index) => {
@@ -235,6 +265,19 @@ function ResultImage({ myResult, othersResult }: props) {
           </text>
         </g> */}
       </svg>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        onClick={() => {
+          setShuffled(!shuffled);
+        }}
+      >
+        새로고침
+      </div>
     </div>
   );
 }

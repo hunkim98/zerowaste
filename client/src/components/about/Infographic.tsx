@@ -6,8 +6,11 @@ interface props {
 }
 function Infographic({ icePackInfo }: props) {
   return (
-    <div>
+    <div style={{ backgroundColor: "grey" }}>
       <div>Infographic</div>
+      <div>{String(icePackInfo?.createdAt).slice(0, 10)}</div>
+      <div>{icePackInfo?.totalRecycle}</div>
+      <div>{icePackInfo?.totalGather}</div>
     </div>
   );
 }
