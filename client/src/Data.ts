@@ -221,7 +221,7 @@ export const questions: questionDTO[] = [
       "할 일이 산더미... 결국 몇 시간 못 잤다. 밤을 샌 다음날 나는 __________.",
     options: [
       {
-        choice: "레*불, 몬스* 등 고카페인의 에너지 드링크를 마신다",
+        choice: "레*불, 몬스* 고카페인 에너지 드링크를 마신다",
         effectOnWaste: { articles: 21 },
       },
       {
