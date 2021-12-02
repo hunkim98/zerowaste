@@ -4,10 +4,11 @@ import { questions } from "../../Data";
 import GameHome from "./GameHome";
 import GameQuestions from "./GameQuestions";
 import "../../styles/Game.css";
+import GameStart from "./GameStart";
 
 interface userWasteInfo {}
 export interface userInfo {
-  stage: 0 | 1 | 2;
+  stage: -1 | 0 | 1 | 2;
   questionNumber: number;
   name: string;
   wasteInfo: number[];
@@ -16,7 +17,7 @@ export interface userInfo {
 
 function Game({}: RouteComponentProps) {
   const [userInfo, setUserInfo] = useState<userInfo>({
-    stage: 0,
+    stage: -1,
     name: "입력해주세요",
     questionNumber: 0,
     wasteInfo: [0, 0, 0, 0, 0, 0],
@@ -32,7 +33,9 @@ function Game({}: RouteComponentProps) {
 
   return (
     <>
-      {userInfo.stage === 0 ? (
+      {userInfo.stage === -1 ? (
+        <GameStart userInfo={userInfo} setUserInfo={setUserInfo} />
+      ) : userInfo.stage === 0 ? (
         <GameHome userInfo={userInfo} setUserInfo={setUserInfo} />
       ) : userInfo.stage === 1 ? (
         <GameQuestions userInfo={userInfo} setUserInfo={setUserInfo} />

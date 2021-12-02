@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { RouteComponentProps, useParams } from "react-router-dom";
+import { RouteComponentProps, useHistory, useParams } from "react-router-dom";
 import "../../styles/Result.css";
 import { ResultData } from "./ResultData";
 import ResultImage from "./ResultImage";
@@ -20,6 +20,7 @@ export interface resultResponse {
 }
 
 function Result({}: RouteComponentProps) {
+  const history = useHistory();
   let { id } = useParams<{ id: string | undefined }>();
   const [resultResponse, setResultResponse] = useState<resultResponse>();
   const [dataForImage, setDataForImage] = useState<resultResponse[]>();
@@ -128,12 +129,24 @@ function Result({}: RouteComponentProps) {
               myResult={resultResponse}
               othersResult={dataForImage}
             />
+            <button
+              onClick={() => {
+                history.push("/");
+              }}
+            >
+              홈으로 가기
+            </button>
             <div className="result_dasup_container">
               <div className="result_dasup_text">
                 이렇게 숲의 모습을 되찾기 위해 사회적 기업 <b>다숲</b>은 어떤
                 일들을 하고 있을까요?
               </div>
-              <div className="result_dasup_button">
+              <div
+                className="result_dasup_button"
+                onClick={() => {
+                  history.push("/about");
+                }}
+              >
                 사회적 기업 <b>다숲</b> 더 알아보러 가기
               </div>
             </div>
