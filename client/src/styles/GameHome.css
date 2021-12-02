@@ -1,4 +1,102 @@
-.game_home_input_container {
+@font-face {
+  font-family: "Bazzi";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/Bazzi.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "S-CoreDream-4Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "S-CoreDream-6Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "S-CoreDream-4Regular";
+}
+
+.global_mobile_container {
+  color: #29433a;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.game_first_sentence {
+  width: 100%;
+  min-height: 210px;
+  font-size: 15pt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: lighter;
+}
+
+.game_please {
+  max-width: 62%;
+  font-size: 22pt;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game_home_input_container {
+  width: 100%;
+  min-height: 64%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.game_your_name {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.game_warning {
+  min-height: 50px;
+  font-size: 13pt;
+  color: #fbf3c9;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game_your_name input {
+  width: 90%;
+  height: 70px;
+  color: #29433a;
+  font-size: 18pt;
+  border: 2px solid #29433a;
+  outline: none;
+  text-align: center;
+}
+
+.game_home_input_container button {
+  width: 90%;
+  height: 82px;
+  background: #fbf3c9;
+  font-size: 19pt;
+  border: 3px solid #29433a;
+  border-radius: 10px;
 }

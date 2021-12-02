@@ -33,7 +33,7 @@ function ResultImage({ myResult, othersResult }: props) {
     { x: 140, y: 360, upperLimit: true, lowerLimit: false },
     { x: 280, y: 360, upperLimit: true, lowerLimit: true },
     //2nd row
-    { x: 15, y: 480, upperLimit: false, lowerLimit: false },
+    { x: 45, y: 490, upperLimit: false, lowerLimit: false },
     { x: 160, y: 540, upperLimit: false, lowerLimit: false },
     { x: 280, y: 510, upperLimit: false, lowerLimit: true },
     { x: 15, y: 600, upperLimit: false, lowerLimit: true },
@@ -49,7 +49,7 @@ function ResultImage({ myResult, othersResult }: props) {
     //bottom right
     { x: 300, y: 1030, upperLimit: true, lowerLimit: false },
     //island
-    { x: 5, y: 1140, upperLimit: true, lowerLimit: false },
+    { x: 0, y: 1110, upperLimit: true, lowerLimit: false },
   ];
   const [flyingStorksArray, setFlyingStorksArray] = useState<resultResponse[]>(
     []
@@ -150,7 +150,7 @@ function ResultImage({ myResult, othersResult }: props) {
         backgroundImage: `url(${background})`,
         backgroundSize: "contain" /* <------ */,
         backgroundRepeat: "no-repeat",
-        // width: "100%",
+        width: "100%",
         minHeight: "100vh",
       }}
     >
