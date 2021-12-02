@@ -37,7 +37,7 @@
 .game_first_sentence {
   width: 100%;
   min-height: 210px;
-  font-size: 15pt;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +47,7 @@
 
 .game_please {
   max-width: 62%;
-  font-size: 22pt;
+  font-size: 24px;
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@
 
 .game_warning {
   min-height: 50px;
-  font-size: 13pt;
+  font-size: 13px;
   color: #fbf3c9;
   margin: 0.5rem;
   display: flex;
@@ -86,7 +86,7 @@
   width: 90%;
   height: 70px;
   color: #29433a;
-  font-size: 18pt;
+  font-size: 18px;
   border: 2px solid #29433a;
   outline: none;
   text-align: center;
@@ -96,7 +96,7 @@
   width: 90%;
   height: 82px;
   background: #fbf3c9;
-  font-size: 19pt;
+  font-size: 18px;
   border: 3px solid #29433a;
   border-radius: 10px;
 }

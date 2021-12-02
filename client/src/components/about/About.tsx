@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, useHistory } from "react-router";
 import { icePackDTO } from "../../../dto/common.dto";
 import Infographic from "./Infographic";
 
 function About({}: RouteComponentProps) {
+  const history = useHistory();
   const [icePackInfo, setIcePackInfo] = useState<icePackDTO>();
   useEffect(() => {
     axios({ method: "GET", url: "/icePack" }).then((res) => {
@@ -18,10 +19,14 @@ function About({}: RouteComponentProps) {
         <div>
           <div>About</div>
           <div>This is eungi</div>
-          <div>{String(icePackInfo?.createdAt).slice(0, 10)}</div>
-          <div>{icePackInfo?.totalRecycle}</div>
-          <div>{icePackInfo?.totalGather}</div>
           <Infographic icePackInfo={icePackInfo} />
+          <button
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            홈으로 가기
+          </button>
         </div>
       </div>
     </div>
