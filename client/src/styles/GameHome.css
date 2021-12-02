@@ -36,8 +36,8 @@
 
 .game_first_sentence {
   width: 100%;
-  min-height: 120px;
-  font-size: 12pt;
+  min-height: 210px;
+  font-size: 15pt;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +47,7 @@
 
 .game_please {
   max-width: 62%;
-  font-size: 18pt;
+  font-size: 22pt;
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@
 
 .game_home_input_container {
   width: 100%;
-  min-height: 68%;
+  min-height: 64%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +65,7 @@
 
 .game_your_name {
   width: 100%;
-  height: 40%;
+  height: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,7 +74,7 @@
 
 .game_warning {
   min-height: 50px;
-  font-size: 11pt;
+  font-size: 13pt;
   color: #fbf3c9;
   margin: 0.5rem;
   display: flex;
@@ -82,21 +82,21 @@
   justify-content: center;
 }
 
-input {
-  width: 380px;
-  height: 62px;
+.game_your_name input {
+  width: 90%;
+  height: 70px;
   color: #29433a;
-  font-size: 14pt;
+  font-size: 18pt;
   border: 2px solid #29433a;
   outline: none;
   text-align: center;
 }
 
-button {
-  width: 380px;
-  height: 78px;
+.game_home_input_container button {
+  width: 90%;
+  height: 82px;
   background: #fbf3c9;
-  font-size: 14pt;
-  border: 2px solid #29433a;
+  font-size: 19pt;
+  border: 3px solid #29433a;
   border-radius: 10px;
 }
