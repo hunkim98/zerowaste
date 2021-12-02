@@ -3,14 +3,14 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { optionsDTO, questions, wasteArray } from "../../Data";
 import { userInfo } from "./Game";
-import "../../styles/GameQuestions.css"
+import "../../styles/GameQuestions.css";
 
 interface props {
   userInfo: userInfo;
   setUserInfo: Dispatch<SetStateAction<userInfo>>;
 }
 
-const timeout = 0;
+const timeout = 1500;
 function GameQuestions({ userInfo, setUserInfo }: props) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -39,18 +39,16 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
         method: "POST",
         url: "/users",
         data: {
+          username: userInfo.name,
           createdAt: new Date(),
           animalType: animalType,
-          animalIndex: Math.floor(Math.random() * 4),
+          animalIndex: Math.floor(Math.random() * 3) + 1,
           //we have a total of 4 variances in animal
           choice: userInfo.choice,
         },
       })
         .then((res) => {
-          setTimeout(() => {
-            history.push(`/result/${res.data.data}`);
-            setIsLoading(false);
-          }, timeout);
+          history.push(`/result/${res.data.data}`);
           // console.log(res);
         })
         .catch((error) => {

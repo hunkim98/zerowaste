@@ -21,6 +21,7 @@ export const readUserSchema = new mongoose.Schema(
     animalType: Number,
     animalIndex: Number,
     createdAt: Date,
+    _id: mongoose.Schema.Types.ObjectId,
   },
   { collection: "zerowaste" } //adds data to the same collection but saved with objectId
 );

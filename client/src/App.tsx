@@ -5,13 +5,13 @@ import Admin from "./components/admin/Admin";
 import Game from "./components/game/Game";
 import Result from "./components/result/Result";
 import "antd/dist/antd.css";
-import Navigation from "./components/Navigation";
+// import Navigation from "./components/Navigation";
 import React from "react";
 
 function App() {
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Switch>
         <Route path="/" exact render={(props) => <Game {...props} />} />
         <Route path="/about" render={(props) => <About {...props} />} />

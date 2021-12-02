@@ -42,8 +42,14 @@ function GameHome({ userInfo, setUserInfo }: props) {
 
           <button
             onClick={() => {
+              console.log(userInfo.name);
               if (userInfo.name.length > 10) {
                 setWarning("닉네임이 너무 깁니다! 10자 이내로 적어주세요");
+              } else if (
+                userInfo.name === "입력해주세요" ||
+                userInfo.name.length === 0
+              ) {
+                setWarning("닉네임은 반드시 입력하셔야 합니다");
               } else {
                 setUserInfo({ ...userInfo, stage: 1 });
               }
