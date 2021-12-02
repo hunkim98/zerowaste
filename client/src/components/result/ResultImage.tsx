@@ -4,6 +4,8 @@ import { resultResponse } from "./Result";
 import { ResultData } from "./ResultData";
 import { shuffle } from "./Shuffle";
 
+import "../../styles/ResultImage.css";
+
 interface props {
   myResult: resultResponse;
   othersResult: resultResponse[];
@@ -151,6 +153,7 @@ function ResultImage({ myResult, othersResult }: props) {
 
   return (
     <div
+      className="result_backgroud_image_container"
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: "contain" /* <------ */,
@@ -265,18 +268,23 @@ function ResultImage({ myResult, othersResult }: props) {
           </text>
         </g> */}
       </svg>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        onClick={() => {
-          setShuffled(!shuffled);
-        }}
-      >
-        새로고침
+
+      <div className="result_refresh_container">
+        <div className="result_refresh_behind"></div>
+        <div
+          className="result_refresh_btn"
+          ///style={{
+          ///  width: "100%",
+          ///  display: "flex",
+          ///  justifyContent: "center",
+          ///  alignItems: "center",
+          ///}}
+          onClick={() => {
+            setShuffled(!shuffled);
+          }}
+        >
+          새로고침하여 다른 풍경보기
+        </div>
       </div>
     </div>
   );
