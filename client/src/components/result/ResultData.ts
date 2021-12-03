@@ -4,6 +4,7 @@ export interface ResultDTO {
   explanation: string[];
   image: string;
   wasteType: string;
+  wasteTypeKorean: string;
   size: number;
 }
 
@@ -12,6 +13,7 @@ export const ResultData: ResultDTO[] = [
     name: "다람쥐",
     englishName: "squirrel",
     wasteType: "plastic",
+    wasteTypeKorean: "플라스틱",
     image: "",
     explanation: [
       "다람쥐는 보통 나뭇가지나 마른 이파리를 모아서 둥지를 만드는데, 플라스틱 쓰레기가 넘쳐나면서 나뭇가지 대신 플라스틱으로 둥지를 짓기 시작하는 다람쥐가 부쩍 늘었다고 해요.",
@@ -25,6 +27,7 @@ export const ResultData: ResultDTO[] = [
     name: "수달",
     englishName: "otter",
     wasteType: "styrofoam",
+    wasteTypeKorean: "스티로품",
     image: "",
     explanation: [
       "최근 강 근처에 사는 수달들의 배설물에서 스티로폼이 자주 발견되고 있어요. 가볍고 딱딱하지 않으니 먹을 수 있는 것으로 착각을 하기 때문이죠. 또한, 수달의 서식지 일부가 이러한 쓰레기와 배출수로 인해 인해 수질이 불량한 것으로 조사되고 있어 시민단체가 개선 대책을 촉구하고 있다고 해요.",
@@ -38,6 +41,7 @@ export const ResultData: ResultDTO[] = [
     name: "금개구리",
     englishName: "goldenFrog",
     wasteType: "articles",
+    wasteTypeKorean: "병/캔 폐품",
     image: "",
     explanation: [
       "금개구리는 전 세계를 통틀어 우리나라에서만 사는 희귀종인데다 멸종위기종 2급으로 지정되어 있는 동물이예요.",
@@ -50,6 +54,7 @@ export const ResultData: ResultDTO[] = [
     name: "당근밭(당근)",
     englishName: "carrot",
     wasteType: "microplastic",
+    wasteTypeKorean: "미세플라스틱",
     image: "",
     explanation: [
       "우리 식탁에 오르는, 땅에서 재배되는 음식들이 점점 미세 플라스틱에 노출되고 있어요. 과일 중에서는 사과, 채소 중에서는 당근에서 가장 많이 검출되고 있다고 해요.",
@@ -62,6 +67,7 @@ export const ResultData: ResultDTO[] = [
     name: "황새",
     englishName: "stork",
     wasteType: "vinyl",
+    wasteTypeKorean: "비닐",
     image: "",
     explanation: [
       "하천 및 해양오염 탓에, 황새를 포함한 바다새들이 비닐을 먹이로 착각하는 경우가 다수 있다고 해요. 찢어서 새끼를 먹이기도 하고, 비닐봉지를 뒤집어 쓴 채로 날개를 펴지 못하고 있는 상황이 목격되고 있기도 한답니다.",
@@ -74,6 +80,7 @@ export const ResultData: ResultDTO[] = [
     name: "나무",
     englishName: "tree",
     wasteType: "paper",
+    wasteTypeKorean: "종이",
     image: "",
     explanation: [
       "종이는 자연(나무)에서 비롯한 친환경 소재라는 인식이 깔려있지만, 벌목으로 인해 사라지고 있는 숲의 절반 가량은 펄프와 종이 생산에 사용된다고 해요.",

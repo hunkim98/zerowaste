@@ -109,12 +109,15 @@ function Result({}: RouteComponentProps) {
               </div>
               <div className="result_textbox_container">
                 <div className="result_textbox_maintext_container">
-                  <div className="result_textbox_maintext_01">@@쓰레기를</div>
+                  <div className="result_textbox_maintext_01">
+                    {ResultData[resultResponse.animalType].wasteTypeKorean}{" "}
+                    쓰레기를
+                  </div>
                   <div className="result_textbox_maintext_02">
-                    가장 많이 배출한 당신!
+                    가장 많이 배출한 {resultResponse.username}님!
                   </div>
                 </div>
-                {ResultData[resultResponse.animalIndex].explanation.map((X) => {
+                {ResultData[resultResponse.animalType].explanation.map((X) => {
                   return <div className="result_textbox_subtext">{X}</div>;
                 })}
               </div>
