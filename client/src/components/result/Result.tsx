@@ -10,6 +10,7 @@ import background_loading from "../background/background_loading.png";
 import background_question_yellow from "../background/background_question_yellow.png";
 import background_question_pink from "../background/background_question_pink.png";
 import background_question_violet from "../background/background_question_violet.png";
+import { LinkPreview } from "@dhaiwat10/react-link-preview";
 
 const timeout = 2000;
 export interface resultResponse {
@@ -109,15 +110,24 @@ function Result({}: RouteComponentProps) {
               </div>
               <div className="result_textbox_container">
                 <div className="result_textbox_maintext_container">
-                  <div className="result_textbox_maintext_01">@@쓰레기를</div>
+                  <div className="result_textbox_maintext_01">
+                    {ResultData[resultResponse.animalType].wasteTypeKorean}{" "}
+                    쓰레기를
+                  </div>
                   <div className="result_textbox_maintext_02">
-                    가장 많이 배출한 당신!
+                    가장 많이 배출한 {resultResponse.username}님!
                   </div>
                 </div>
-                {ResultData[resultResponse.animalIndex].explanation.map((X) => {
+                {ResultData[resultResponse.animalType].explanation.map((X) => {
                   return <div className="result_textbox_subtext">{X}</div>;
                 })}
               </div>
+              <LinkPreview
+                margin="20px"
+                className=""
+                //temporary empty
+                url={ResultData[resultResponse.animalType].link}
+              />
 
               <div className="result_othersresult_container">
                 <div className="result_othersresult_backgroundshape"></div>
