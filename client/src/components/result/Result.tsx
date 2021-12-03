@@ -10,6 +10,7 @@ import background_loading from "../background/background_loading.png";
 import background_question_yellow from "../background/background_question_yellow.png";
 import background_question_pink from "../background/background_question_pink.png";
 import background_question_violet from "../background/background_question_violet.png";
+import { LinkPreview } from "@dhaiwat10/react-link-preview";
 
 const timeout = 2000;
 export interface resultResponse {
@@ -121,6 +122,12 @@ function Result({}: RouteComponentProps) {
                   return <div className="result_textbox_subtext">{X}</div>;
                 })}
               </div>
+              <LinkPreview
+                margin="20px"
+                className=""
+                //temporary empty
+                url={ResultData[resultResponse.animalType].link}
+              />
 
               <div className="result_othersresult_container">
                 <div className="result_othersresult_text">
