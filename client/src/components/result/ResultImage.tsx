@@ -75,7 +75,7 @@ function ResultImage({ myResult, othersResult }: props) {
     // );
 
     const tempResults = othersResult.concat(myResult);
-    console.log(tempResults);
+    console.log("thi,", tempResults);
     const groundAnimals = tempResults.filter(
       (X) => !(X.animalIndex === 2 && X.animalType === 4)
     );
@@ -83,18 +83,18 @@ function ResultImage({ myResult, othersResult }: props) {
       (X) => X.animalIndex === 2 && X.animalType === 4
     );
     if (flyingStorks.length > 2) {
-      const userStorkData: resultResponse[] = [];
-      flyingStorks.filter(
+      const userStorkData = flyingStorks.find(
         //find the data same with the user data
-        (X) =>
-          X?.username === myResult.username &&
-          X.animalIndex === myResult.animalIndex &&
-          X.animalType === myResult.animalType
+        (X) => X._id === myResult._id
       );
-      if (userStorkData.length !== 0) {
+      if (userStorkData) {
         //there exists a user data in the userStorkData
-        const finalData = userStorkData;
-        finalData.push(flyingStorks[0]);
+        const finalData: resultResponse[] = [];
+        finalData.push(userStorkData);
+        const oneOtherData = flyingStorks.find((X) => X._id !== myResult._id);
+        if (oneOtherData) {
+          finalData.push(oneOtherData);
+        }
         setFlyingStorksArray(finalData);
       } else {
         const finalData = flyingStorks.filter((X, index) => index < 2);
