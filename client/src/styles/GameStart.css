@@ -1,0 +1,81 @@
+.game_start_container {
+  width: 100%;
+  height: 1000px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.game_start_title_image_container {
+  width: 100%;
+  margin-top: 30%;
+
+  display: flex;
+  align-items: center;
+}
+
+.game_start_text {
+  margin-bottom: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: #29433a;
+}
+
+.game_start_button_container_container {
+  width: 100%;
+
+  margin-bottom: 20%;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.game_start_button_container {
+  position: relative;
+  width: 90%;
+}
+
+.game_start_button_behind {
+  position: absolute;
+  bottom: -6px;
+
+  width: 100%;
+  height: 24px;
+
+  background: #ffdb7e;
+  border: 2px solid #29433a;
+  box-sizing: content-box;
+  border-radius: 10px;
+  font-size: 15pt;
+
+  z-index: 0;
+}
+
+.game_start_button {
+  position: relative;
+
+  width: 100%;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  background: #fbf3c9;
+  border: 2px solid #29433a;
+  box-sizing: content-box;
+  border-radius: 10px;
+  font-size: 15pt;
+
+  z-index: 1;
+}

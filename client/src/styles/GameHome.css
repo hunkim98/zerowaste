@@ -26,8 +26,23 @@
   font-family: "S-CoreDream-4Regular";
 }
 
-.global_mobile_container {
+.game_home_container {
   color: #29433a;
+
+  width: 100%;
+  height: 1000px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.game_contents_container {
+  margin-top: 0%;
+  height: 600px;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,13 +51,14 @@
 
 .game_first_sentence {
   width: 100%;
-  min-height: 210px;
-  font-size: 16px;
+  margin-top: 15%;
+
+  font-size: 17px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-weight: lighter;
 }
 
 .game_please {
@@ -54,18 +70,11 @@
   align-items: center;
 }
 
-.game_home_input_container {
-  width: 100%;
-  min-height: 64%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
 .game_your_name {
   width: 100%;
-  height: 30%;
+  height: fit-content;
+  margin-top: 24px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,10 +82,9 @@
 }
 
 .game_warning {
-  min-height: 50px;
-  font-size: 13px;
+  font-size: 15px;
   color: #fbf3c9;
-  margin: 0.5rem;
+  margin: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,6 +93,7 @@
 .game_your_name input {
   width: 90%;
   height: 70px;
+
   color: #29433a;
   font-size: 18px;
   border: 2px solid #29433a;
@@ -92,11 +101,53 @@
   text-align: center;
 }
 
-.game_home_input_container button {
+.game_button_container_container {
+  width: 100%;
+
+  margin-bottom: 20%;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.game_button_container {
+  position: relative;
   width: 90%;
-  height: 82px;
-  background: #fbf3c9;
-  font-size: 18px;
-  border: 3px solid #29433a;
+}
+
+.game_home_button_behind {
+  position: absolute;
+  bottom: -6px;
+
+  width: 100%;
+  height: 24px;
+
+  background: #ffdb7e;
+  border: 2px solid #29433a;
+  box-sizing: content-box;
   border-radius: 10px;
+  font-size: 15pt;
+
+  z-index: 0;
+}
+
+.game_home_button_button {
+  position: relative;
+
+  width: 100%;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  background: #fbf3c9;
+  border: 2px solid #29433a;
+  box-sizing: content-box;
+  border-radius: 10px;
+  font-size: 15pt;
+
+  z-index: 1;
 }
