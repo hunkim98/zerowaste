@@ -10,6 +10,7 @@ import background_loading from "../background/background_loading.png";
 import background_question_yellow from "../background/background_question_yellow.png";
 import background_question_pink from "../background/background_question_pink.png";
 import background_question_violet from "../background/background_question_violet.png";
+import { LinkPreview } from "@dhaiwat10/react-link-preview";
 
 const timeout = 2000;
 export interface resultResponse {
@@ -109,45 +110,80 @@ function Result({}: RouteComponentProps) {
               </div>
               <div className="result_textbox_container">
                 <div className="result_textbox_maintext_container">
-                  <div className="result_textbox_maintext_01">@@쓰레기를</div>
+                  <div className="result_textbox_maintext_01">
+                    {ResultData[resultResponse.animalType].wasteTypeKorean}{" "}
+                    쓰레기를
+                  </div>
                   <div className="result_textbox_maintext_02">
-                    가장 많이 배출한 당신!
+                    가장 많이 배출한 {resultResponse.username}님!
                   </div>
                 </div>
-                {ResultData[resultResponse.animalIndex].explanation.map((X) => {
+                {ResultData[resultResponse.animalType].explanation.map((X) => {
                   return <div className="result_textbox_subtext">{X}</div>;
                 })}
               </div>
+              <LinkPreview
+                margin="20px"
+                className=""
+                //temporary empty
+                url={ResultData[resultResponse.animalType].link}
+              />
 
               <div className="result_othersresult_container">
-                <div className="result_othersresult_text">
-                  우리 도움이 필요한 숲 속 친구들이 여기 모여있어요.
+                <div className="result_othersresult_backgroundshape"></div>
+                <div className="result_othersresult_ballon">
+                  <div className="result_othersresult_text_container">
+                    <div className="result_othersresult_text">
+                      우리 도움이 필요한 숲 속
+                    </div>
+                    <div className="result_othersresult_text">
+                      친구들이 여기 모여있어요.
+                    </div>
+                  </div>
+                </div>
+
+                <ResultImage
+                  myResult={resultResponse}
+                  othersResult={dataForImage}
+                />
+              </div>
+
+              <div className="result_dasup_container">
+                <div className="result_dasup_text_container">
+                  <div className="result_dasup_text">
+                    이렇게 숲의 모습을 되찾기 위해 사회적
+                  </div>
+                  <div className="result_dasup_text">
+                    기업 <b>다숲</b>은 어떤 일들을 하고 있을까요?
+                  </div>
+                </div>
+                <div className="result_dasup_dasupbtn_container">
+                  <div className="result_dasup_dasupbtn_behind"></div>
+                  <div
+                    className="result_dasup_dasupbtn_btn"
+                    onClick={() => {
+                      history.push("/about");
+                    }}
+                  >
+                    사회적 기업 <b>다숲</b> 더 알아보러 가기
+                  </div>
                 </div>
               </div>
-            </div>
-            <ResultImage
-              myResult={resultResponse}
-              othersResult={dataForImage}
-            />
-            <button
-              onClick={() => {
-                history.push("/");
-              }}
-            >
-              홈으로 가기
-            </button>
-            <div className="result_dasup_container">
-              <div className="result_dasup_text">
-                이렇게 숲의 모습을 되찾기 위해 사회적 기업 <b>다숲</b>은 어떤
-                일들을 하고 있을까요?
-              </div>
-              <div
-                className="result_dasup_button"
-                onClick={() => {
-                  history.push("/about");
-                }}
-              >
-                사회적 기업 <b>다숲</b> 더 알아보러 가기
+              <div className="result_home_container">
+                <div className="result_home_text">
+                  또 도움이 필요한 친구들이 있을까요?
+                </div>
+                <div className="result_home_homebtn_container">
+                  <div className="result_home_homebtn_behind"></div>
+                  <button
+                    className="result_home_homebtn_btn"
+                    onClick={() => {
+                      history.push("/");
+                    }}
+                  >
+                    게임 홈으로 가기
+                  </button>
+                </div>
               </div>
             </div>
           </>

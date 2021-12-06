@@ -19,7 +19,7 @@ function About({}: RouteComponentProps) {
         <div>
           <div>About</div>
           <div>This is eungi</div>
-          <Infographic icePackInfo={icePackInfo} />
+
           <button
             onClick={() => {
               history.push("/");
@@ -27,6 +27,7 @@ function About({}: RouteComponentProps) {
           >
             홈으로 가기
           </button>
+          {/* <Infographic icePackInfo={icePackInfo} /> */}
         </div>
       </div>
     </div>
