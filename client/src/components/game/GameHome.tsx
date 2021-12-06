@@ -20,43 +20,52 @@ function GameHome({ userInfo, setUserInfo }: props) {
           backgroundImage: `url(${background_home})`,
         }}
       >
-        <div className="game_first_sentence">
-          <div> 쓰레기 소비패턴을 분석하여 당신의 도움이 </div>
-          <div> 가장 필요한 숲속 친구를 찾아드릴게요. </div>
-        </div>
-        <div className="game_please">
-          <div> 먼저 숲속 친구의 </div>
-          <div> 이름을 지어주세요!</div>
-        </div>
-        <div className="game_home_input_container">
-          <div className="game_your_name">
-            <input
-              placeholder={userInfo.name}
-              onChange={(e) => {
-                setUserInfo({ ...userInfo, name: e.target.value });
-              }}
-            ></input>
+        <div className="game_home_container">
+          <div className="game_contents_container">
+            <div className="game_first_sentence">
+              <div> 쓰레기 소비패턴을 분석하여 당신의 도움이 </div>
+              <div> 가장 필요한 숲속 친구를 찾아드릴게요. </div>
+            </div>
+            <div className="game_please">
+              <div> 먼저 숲속 친구의 </div>
+              <div> 이름을 지어주세요!</div>
+            </div>
 
-            <div className="game_warning">{warning}</div>
+            <div className="game_your_name">
+              <input
+                placeholder={userInfo.name}
+                onChange={(e) => {
+                  setUserInfo({ ...userInfo, name: e.target.value });
+                }}
+              ></input>
+
+              <div className="game_warning">{warning}</div>
+            </div>
           </div>
 
-          <button
-            onClick={() => {
-              console.log(userInfo.name);
-              if (userInfo.name.length > 10) {
-                setWarning("닉네임이 너무 깁니다! 10자 이내로 적어주세요");
-              } else if (
-                userInfo.name === "입력해주세요" ||
-                userInfo.name.length === 0
-              ) {
-                setWarning("닉네임은 반드시 입력하셔야 합니다");
-              } else {
-                setUserInfo({ ...userInfo, stage: 1 });
-              }
-            }}
-          >
-            시작하기
-          </button>
+          <div className="game_button_container_container">
+            <div className="game_button_container">
+              <div className="game_home_button_behind"></div>
+              <button
+                className="game_home_button_button"
+                onClick={() => {
+                  console.log(userInfo.name);
+                  if (userInfo.name.length > 10) {
+                    setWarning("닉네임이 너무 깁니다! 10자 이내로 적어주세요");
+                  } else if (
+                    userInfo.name === "입력해주세요" ||
+                    userInfo.name.length === 0
+                  ) {
+                    setWarning("닉네임은 반드시 입력하셔야 합니다");
+                  } else {
+                    setUserInfo({ ...userInfo, stage: 1 });
+                  }
+                }}
+              >
+                시작하기
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
