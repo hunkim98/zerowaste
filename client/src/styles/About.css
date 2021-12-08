@@ -11,6 +11,7 @@
   text-align: center;
   line-height: 230%;
   color: #29433a;
+  padding-bottom: 50px;
 }
 
 .about_topic_container {
@@ -153,8 +154,16 @@
   scroll-snap-type: x mandatory;
 }
 
-.about_activity_01 {
+.about_icepack_01 {
   scroll-snap-align: start;
+}
+
+.about_icepack_02 {
+  scroll-snap-align: center;
+}
+
+.about_icepack_03 {
+  scroll-snap-align: end;
 }
 
 .about_text_container_02 {

@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route path="/" exact render={(props) => <Game {...props} />} />
         <Route path="/about" render={(props) => <About {...props} />} />
-        <Route path="/admin" render={(props) => <Admin {...props} />} />
+        {/* <Route path="/admin" render={(props) => <Admin {...props} />} /> */}
         <Route path="/result/:id" render={(props) => <Result {...props} />} />
       </Switch>
     </>
