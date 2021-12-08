@@ -33,6 +33,7 @@
   width: 100%;
   max-width: 500px;
   position: relative;
+  overflow: hidden;
   /* padding-top: 60px; */
   /* if you change padding-top, you must change navigation height too */
 }
