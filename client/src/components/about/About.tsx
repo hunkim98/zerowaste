@@ -17,12 +17,12 @@ import background_white from "../background/background_white.png";
 function About({}: RouteComponentProps) {
   const history = useHistory();
   const [icePackInfo, setIcePackInfo] = useState<icePackDTO>();
-  useEffect(() => {
-    axios({ method: "GET", url: "/icePack" }).then((res) => {
-      console.log(res.data.data[0]);
-      setIcePackInfo(res.data.data[0]);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios({ method: "GET", url: "/icePack" }).then((res) => {
+  //     console.log(res.data.data[0]);
+  //     setIcePackInfo(res.data.data[0]);
+  //   });
+  // }, []);
   return (
     <div className="global_container">
       <div className="global_mobile_container">
@@ -49,9 +49,9 @@ function About({}: RouteComponentProps) {
           </div>
           <div className="about_activityimg_container">
             <div className="about_activityimg_container_container">
-              <img className="about_activity_01" src={about_activity_01}></img>
-              <img className="about_activity_02" src={about_activity_02}></img>
-              <img className="about_activity_03" src={about_activity_03}></img>
+              <img className="about_icepack_01" src={about_activity_01}></img>
+              <img className="about_icepack_02" src={about_activity_02}></img>
+              <img className="about_icepack_03" src={about_activity_03}></img>
             </div>
           </div>
           <div className="about_text_container_02">
