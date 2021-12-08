@@ -18,14 +18,13 @@ function GameStart({ userInfo, setUserInfo }: props) {
       <div
         className="global_mobile_container"
         style={{
+          backgroundPosition: "center",
           backgroundImage: `url(${background_start})`,
         }}
       >
         <div className="game_start_container">
           <div className="game_start_title_image_container">
-            <div className="game_start_title_image">
-              <img src={background_start_title} />
-            </div>
+            <img className="game_start_image" src={background_start_title} />
           </div>
 
           <div className="game_start_text">
@@ -33,9 +32,7 @@ function GameStart({ userInfo, setUserInfo }: props) {
             <div>제로웨이스트 프로젝트</div>
           </div>
 
-          <div className="game_start_animals_image">
-            <img src={background_start_animals} />
-          </div>
+          <img className="game_start_image" src={background_start_animals} />
 
           <div className="game_start_button_container_container">
             <div className="game_start_button_container">
