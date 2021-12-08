@@ -150,20 +150,25 @@
   max-width: 500px;
   width: 100%;
   gap: 12px;
-
   scroll-snap-type: x mandatory;
 }
 
 .about_icepack_01 {
   scroll-snap-align: start;
+  width: 90%;
+  height: 90%;
 }
 
 .about_icepack_02 {
   scroll-snap-align: center;
+  width: 90%;
+  height: 90%;
 }
 
 .about_icepack_03 {
   scroll-snap-align: end;
+  width: 90%;
+  height: 90%;
 }
 
 .about_text_container_02 {
