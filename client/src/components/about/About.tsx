@@ -17,6 +17,9 @@ import background_white from "../background/background_white.png";
 function About({}: RouteComponentProps) {
   const history = useHistory();
   const [icePackInfo, setIcePackInfo] = useState<icePackDTO>();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // useEffect(() => {
   //   axios({ method: "GET", url: "/icePack" }).then((res) => {
   //     console.log(res.data.data[0]);
