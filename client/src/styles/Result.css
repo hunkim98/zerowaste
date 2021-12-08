@@ -112,7 +112,7 @@
 .result_image_shadow {
   position: absolute;
 
-  bottom: 0px;
+  bottom: 10px;
 
   width: 70%;
   height: 65px;

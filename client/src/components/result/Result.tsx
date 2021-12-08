@@ -107,6 +107,18 @@ function Result({}: RouteComponentProps) {
                     ResultData[resultResponse.animalType].englishName
                   }(${resultResponse.animalIndex}).png`}
                 />
+                <div
+                  style={{
+                    fontSize: 25,
+                    fontWeight: "bold",
+                    color: "black",
+                    zIndex: 5,
+                    position: "absolute",
+                    bottom: -30,
+                  }}
+                >
+                  {resultResponse.username}
+                </div>
               </div>
               <div className="result_textbox_container">
                 <div className="result_textbox_maintext_container">
@@ -115,7 +127,7 @@ function Result({}: RouteComponentProps) {
                     쓰레기를
                   </div>
                   <div className="result_textbox_maintext_02">
-                    가장 많이 배출한 {resultResponse.username}님!
+                    가장 많이 배출한 당신!
                   </div>
                 </div>
                 {ResultData[resultResponse.animalType].explanation.map((X) => {

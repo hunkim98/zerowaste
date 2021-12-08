@@ -24,7 +24,10 @@ function GameStart({ userInfo, setUserInfo }: props) {
       >
         <div className="game_start_container">
           <div className="game_start_title_image_container">
-            <img className="game_start_image" src={background_start_title} />
+            <img
+              className="game_start_title_image"
+              src={background_start_title}
+            />
           </div>
 
           <div className="game_start_text">
