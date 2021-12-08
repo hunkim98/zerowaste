@@ -88,9 +88,9 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
         className="global_mobile_container"
         style={{
           backgroundImage:
-            userInfo.questionNumber < 4
+            userInfo.questionNumber < 3
               ? `url(${background_question_pink})`
-              : userInfo.questionNumber < 8
+              : userInfo.questionNumber < 6
               ? `url(${background_question_yellow})`
               : `url(${background_question_violet})`,
         }}
@@ -130,9 +130,9 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
                         className="game_question_options_behind"
                         style={{
                           backgroundColor:
-                            userInfo.questionNumber < 4
+                            userInfo.questionNumber < 3
                               ? "#7CD6C5"
-                              : userInfo.questionNumber < 8
+                              : userInfo.questionNumber < 6
                               ? "#67B54C"
                               : "#FFDB7E",
                         }}
@@ -141,9 +141,9 @@ function GameQuestions({ userInfo, setUserInfo }: props) {
                         className="game_question_options_button"
                         style={{
                           backgroundColor:
-                            userInfo.questionNumber < 4
+                            userInfo.questionNumber < 3
                               ? "#C5ECE5"
-                              : userInfo.questionNumber < 8
+                              : userInfo.questionNumber < 6
                               ? "#A5C379"
                               : "#FBF3C9",
                         }}
