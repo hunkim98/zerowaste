@@ -7,17 +7,8 @@
   height: 100%;
 }
 
-.loading_text01 {
-  width: 60%;
-
-  font-family: "S-CoreDream-4Regular";
-  font-size: 20pt;
-  text-align: center;
-  color: #ffffff;
-}
-
-.loading_text02 {
-  width: 60%;
+.loading_text {
+  width: 100%;
 
   font-family: "S-CoreDream-4Regular";
   font-size: 20pt;
